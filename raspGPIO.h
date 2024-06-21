@@ -9,10 +9,17 @@
 #include <string.h>
 #include <unistd.h>
 
+// Konstanten
 #define INPUT 0
 #define OUTPUT 1
 #define LOW 0
 #define HIGH 1
+#define GPIO_EXPORT "/sys/class/gpio/export"
+#define GPIO_UNEXPORT "/sys/class/gpio/unexport"
+#define GPIO_PIN_PATH "/sys/class/gpio/gpio"
+#define PATH_LENGTH 35
+#define PIN_LENGTH 3
+#define TYPE_LENGTH 2
 
 // Generische Funktion für das "behandeln" von Fehlern
 void handleError(const char* msg);
