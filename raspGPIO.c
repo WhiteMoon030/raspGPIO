@@ -20,7 +20,7 @@ void writeToFile(const char* path, const char* value){
 // Aktivieren von GPIO-Pins
 // type = 0 => Input Pin
 // type = 1 => Output Pin
-void pinMode(uint8_t pin, uint8_t type){
+void pinMode(const uint8_t pin, const GPIO_TYPE type){
 	// Pin als String speichern
 	char pin_string[PIN_LENGTH];
 	snprintf(pin_string, sizeof(pin_string), "%d",pin);
@@ -37,7 +37,7 @@ void pinMode(uint8_t pin, uint8_t type){
 }
 
 // Löscht Einstellungen eines bestimmten GPIO-Pins
-void clearPin(uint8_t pin){
+void clearPin(const uint8_t pin){
 	// Pin als String speichern
 	char pin_string[PIN_LENGTH];
 	snprintf(pin_string, sizeof(pin_string), "%d",pin);
@@ -47,13 +47,13 @@ void clearPin(uint8_t pin){
 }
 
 // Setzt einen Pin auf einen bestimmten Wert
-void setPin(uint8_t pin, uint8_t value){
+void setPin(const uint8_t pin, const GPIO_LEVEL level){
 	// Pfad der Value-Datei in String speichern
 	char value_path[PATH_LENGTH];
 	snprintf(value_path, sizeof(value_path), "%s%d/value", GPIO_PIN_PATH, pin);
 	// Wert als String speichern
 	char value_string[TYPE_LENGTH];
-	snprintf(value_string, sizeof(value_string), "%d", value);
+	snprintf(value_string, sizeof(value_string), "%d", level);
 	// Wert des Pins in die passende Value-Datei schreiben
 	writeToFile(value_path, value_string);
 	return;
